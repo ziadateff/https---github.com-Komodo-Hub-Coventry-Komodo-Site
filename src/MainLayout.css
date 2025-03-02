@@ -1,61 +1,94 @@
-/* Main Layout styling (Just left sidebar for now) */
+/* Main Layout */
 .main-layout {
   display: flex;
-  height: 100vh; 
+  height: 98vh; /* Full viewport height */
 }
 
-/* Sidebar styling */
+/* Sidebar */
 .sidebar {
-  width: 80px; 
-  background-color: #78d0fe; 
+  width: 80px; /* Fixed width for the sidebar */
+  background-color: #78d0fe; /* Light blue background */
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; 
+  justify-content: space-between; /* Space out elements (avatar, nav links, help icon) */
   padding-top: 20px;
   padding-bottom: 20px;
+  border-radius: 0 20px 20px 0; /* Curved edges on the right side */
 }
 
-/* Avatar styling */
+/* Main Content */
+.main-content {
+  flex: 1; /* Take up remaining space */
+  padding: 20px; /* Add some padding */
+  overflow-y: auto; /* Enable scrolling if content overflows */
+  min-width: 0; /* Prevent content from overflowing */
+}
+
+/* Avatar container styling */
 .avatar-container {
-  margin-bottom: 20px;
+  margin-bottom: 20px; /* Space below the avatar */
 }
 
+.avatar-label {
+  cursor: pointer; /* Make the avatar clickable */
+}
+
+/* Default Avatar styling */
 .avatar {
   width: 50px;
   height: 50px;
-  border-radius: 50%; 
-  background-color: #ffffff; 
-  color: #5d83d9; 
+  border-radius: 50%; /* Circular shape */
+  background-color: #ffffff; /* White background for default avatar */
+  color: #5d83d9; /* Blue text color for default avatar */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 24px; /* Font size for default avatar text */
+  font-weight: bold; /* Bold text for default avatar */
+}
+
+/* Uploaded Avatar Image styling */
+.avatar-image {
+  width: 50px; /* Same size as default avatar */
+  height: 50px; /* Same size as default avatar */
+  border-radius: 50%; /* Circular shape for uploaded images */
+  object-fit: cover; /* Ensure the image fits within the circle without distortion */
 }
 
 /* Navigation links styling */
 .nav-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Stack navigation items vertically */
 }
 
 .nav-item {
-  color: #ffffff; /* White icons */
-  font-size: 24px;
-  margin-bottom: 20px;
+  color: #ffffff; /* White icons/text for navigation items */
+  font-size: 24px; /* Icon size */
+  margin-bottom: 20px; /* Space between navigation items */
   text-decoration: none; /* Remove underline from links */
 }
 
 .nav-item:hover {
-  color: #d9f3ff; /* Light blue hover effect */
+  color: #d9f3ff; /* Light blue hover effect for navigation items */
 }
 
 /* Help Icon at the Bottom */
 .bottom-icon {
-  margin-top: auto; /* Push to the bottom of the sidebar */
+  margin-top: auto; /* Push help icon to the bottom of the sidebar */
 }
 
 .bottom-icon .nav-item {
-  font-size: 24px;
+  font-size: 24px; /* Icon size for help icon (consistent with others) */
+}
+
+/* Hover Effect for Avatar (Optional) */
+.avatar-label:hover .avatar,
+.avatar-label:hover .avatar-image {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover for avatar */
+}
+
+/* Transition Effect for Smooth Hover Animations (Optional) */
+.avatar, .avatar-image, .nav-item {
+  transition: all 0.3s ease-in-out;
 }

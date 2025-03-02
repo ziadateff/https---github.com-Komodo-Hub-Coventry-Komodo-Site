@@ -1,0 +1,131 @@
+/* Maths Page Styling */
+.maths-page {
+  padding: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.maths-page h1 {
+  font-size: 36px; /* Larger font size for visibility */
+  color: #56bbf1;
+  font-weight: 400; /* Make the title bold */
+  text-align: left; /* Center align the title */
+  margin-bottom: 24px; /* Space below the title */
+  letter-spacing: 1px; /* Add spacing between letters */
+  font-family: 'Poppins', sans-serif; /* Change the font family */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
+}
+
+.maths-page p {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+/* Weeks Accordion Styling */
+.weeks-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.week-section {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.week-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #78d0fe;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.week-header:hover {
+  background-color: #6cbbf1;
+}
+
+.week-header h2 {
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.week-header span {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.week-content {
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+}
+
+.week-content ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.week-content li {
+  font-size: 16px;
+  color: #333;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.week-content li:last-child {
+  border-bottom: none;
+}
+
+/* Container Layout */
+.container-layout {
+  display: flex;
+  gap: 20px; /* Space between containers */
+  margin-top: 40px;
+}
+
+/* Interactive Game Container Styling */
+.interactive-game-container {
+  flex: 0 0 300px; /* Fixed width, won't grow or shrink */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.1) 0px 4px 6px;
+  height: 600px; /* Fixed height */
+  width: 300px;
+}
+
+.interactive-game-container h2 {
+  font-size: 24px;
+  color: #56bbf1;
+  margin-bottom: 20px;
+}
+
+.interactive-game-container iframe {
+  width: 100%; /* Full width of the container */
+  height: 88%; /* Full height of the container */
+  border: none; /* Remove default iframe border */
+  border-radius: 10px; /* Match container's border radius */
+}
+
+/* Announcements and Assignments Containers */
+.announcements-container, .assignments-container {
+  flex: 1; /* Take up remaining space */
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border-color: #56bbf1;
+  box-shadow: rgba(0,0,0,0.1) 0px 4px 30px;
+  height: 600px; /* Fixed height */
+}
+
+.announcements-container h2, .assignments-container h2 {
+  font-size: 24px;
+  color: #56bbf1;
+  margin-bottom: 20px;
+}

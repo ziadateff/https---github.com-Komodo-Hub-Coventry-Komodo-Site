@@ -1,47 +1,72 @@
-/* Styling for Module page */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Styling for Module Page */
 .modules-container {
-  text-align: left;
+  text-align: center; /* Center align the title and grid */
   padding: 20px;
 }
 
 .modules-title {
-  font-size: 28px;
-  color: #6c63ff; 
-  margin-bottom: 20px;
+  font-size: 36px; /* Larger font size for visibility */
+  color: #56bbf1;
+  font-weight: 400; /* Make the title bold */
+  text-align: left; /* Center align the title */
+  margin-bottom: 24px; /* Space below the title */
+  letter-spacing: 1px; /* Add spacing between letters */
+  font-family: 'Poppins', sans-serif; /* Change the font family */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
 }
 
+
+/* Grid layout for module cards */
 .modules-grid {
-  display: flex; 
-  gap: 20px; 
-  justify-content: space-between; 
-  flex-wrap: nowrap; 
-  overflow-x: auto; 
-  padding: 10px;
+  display: flex; /* Use grid for structured layout */
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+  justify-content: center; /* Center the grid in the container */
 }
 
+/* Module card styling (rectangular shape) */
 .module-card {
-  background-color: #ffffff; 
-  border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 40px; 
-  text-align: center;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: 150px; 
-  height: 100px; 
+  background-color: #ffffff; /* Fallback background color */
+  background-size: cover; /* Ensure the background image covers the card */
+  background-position: center; /* Center the background image */
+  border-radius: 10px; /* Slightly rounded corners */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Inner spacing */
+  text-align: center; /* Center align content */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Smooth hover effect */
+  width: 440px; /* Current width */
+  height: 390px; /* Current height */
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+  color: rgb(255, 255, 255); /* Ensure text is readable on the background image */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add shadow to text for better visibility */
+  text-decoration: none; /* Remove underline for <Link> */
 }
 
 .module-card:hover {
-  transform: scale(1.05); 
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
+/* Focus effect for accessibility */
+.module-card:focus {
+  outline: 2px solid #6c63ff; /* Add outline for keyboard navigation */
+  outline-offset: 2px; /* Space between outline and element */
+}
+
+/* Icon inside the module card */
 .module-icon {
-  font-size: 60px; 
+  font-size: 40px; /* Icon size */
+  margin-bottom: 10px;
 }
 
+/* Module name styling */
 .module-name {
   margin-top: 10px;
-  font-size: 20px; 
+  font-size: 40px; /* Font size for module names */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8); /* Stronger shadow */
 }
-
