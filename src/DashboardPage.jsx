@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { arrayMove, SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
-import Masonry from 'react-masonry-css'; // Import Masonry
-import SortableWidget from './SortableWidget'; // Import the SortableWidget component
-import './DashboardPage.css'; // Import the CSS file
-import RevenueChart from './RevenueChart.jsx'; // Import the RevenueChart component
-import UserTypesPieChart from './UserTypesPieChart.jsx'; // Import the UserTypesPieChart component
+import Masonry from 'react-masonry-css';
+import SortableWidget from './SortableWidget';
+import './DashboardPage.css';
+import RevenueChart from './RevenueChart.jsx';
+import UserTypesPieChart from './UserTypesPieChart.jsx';
 
 const DashboardPage = () => {
   const [schoolsCount, setSchoolsCount] = useState(0);
   const [totalStudents, setTotalStudents] = useState(0);
   const [communities, setCommunities] = useState([]);
   const [schools, setSchools] = useState([]);
+  const [totalCommunities, setTotalCommunities] = useState(0);
 
   // Widgets state
   const [widgets, setWidgets] = useState([
@@ -20,6 +21,8 @@ const DashboardPage = () => {
     { id: 'total-students', content: 'Total Students', size: 'small' },
     { id: 'communities-list', content: 'Communities List', size: 'large' },
     { id: 'user-types-pie', content: 'User Types Pie Chart', size: 'medium' },
+    { id: 'schools-list', content: 'Schools List', size: 'large' },
+    { id: 'total-communities', content: 'Total Communities', size: 'small' },
   ]);
 
   // Fetch the number of schools subscribed
@@ -42,15 +45,29 @@ const DashboardPage = () => {
   useEffect(() => {
     fetch('http://localhost:5000/api/communities')
       .then((response) => response.json())
-      .then((data) => setCommunities(data))
+      .then((data) => {
+        console.log('Communities Data:', data); // Debugging
+        setCommunities(data);
+      })
       .catch((error) => console.error('Error fetching communities:', error));
+  }, []);
+
+  // Fetch the total number of communities
+  useEffect(() => {
+    fetch('http://localhost:5000/api/communities/count')
+      .then((response) => response.json())
+      .then((data) => setTotalCommunities(data.count))
+      .catch((error) => console.error('Error fetching communities count:', error));
   }, []);
 
   // Fetch the list of schools
   useEffect(() => {
     fetch('http://localhost:5000/api/schools')
       .then((response) => response.json())
-      .then((data) => setSchools(data))
+      .then((data) => {
+        console.log('Schools Data:', data); // Debugging
+        setSchools(data);
+      })
       .catch((error) => console.error('Error fetching schools:', error));
   }, []);
 
@@ -78,9 +95,9 @@ const DashboardPage = () => {
 
   // Masonry breakpoints
   const breakpointColumnsObj = {
-    default: 3, // 3 columns by default
-    1100: 2, // 2 columns for screens <= 1100px
-    700: 1, // 1 column for screens <= 700px
+    default: 3,
+    1100: 2,
+    700: 1,
   };
 
   return (
@@ -88,7 +105,6 @@ const DashboardPage = () => {
       <h1 className="header">Dashboard Page</h1>
       <p className="welcome-text">Welcome to the Dashboard! Here you can view your progress and statistics.</p>
 
-      {/* Drag-and-drop context */}
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -103,10 +119,8 @@ const DashboardPage = () => {
             {widgets.map((widget) => (
               <SortableWidget key={widget.id} id={widget.id}>
                 <div className={`widget ${widget.size}`}>
-                  {/* Drag icon */}
                   <div className="drag-handle">☰</div>
 
-                  {/* Widget content */}
                   {widget.id === 'schools-count' && (
                     <>
                       <h2 className="widget-title">Schools Subscribed to Komodohub</h2>
@@ -143,6 +157,25 @@ const DashboardPage = () => {
                     <>
                       <h2 className="widget-title">User Types on Komodohub</h2>
                       <UserTypesPieChart />
+                    </>
+                  )}
+                  {widget.id === 'schools-list' && (
+                    <>
+                      <h2 className="widget-title">Schools Using Komodohub</h2>
+                      <ul className="community-list">
+                        {schools.slice(0, 5).map((school) => (
+                          <li key={school.id} className="community-item">
+                            {school.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                  {widget.id === 'total-communities' && (
+                    <>
+                      <h2 className="widget-title">Total Communities in Komodohub</h2>
+                      <p className="widget-count">{totalCommunities}</p>
+                      <p className="widget-subtext">Communities</p>
                     </>
                   )}
                 </div>
