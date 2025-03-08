@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './MainLayout.css';
-import 'primeicons/primeicons.css'; 
+import 'primeicons/primeicons.css';
 
 const MainLayout = ({ children }) => {
   const [avatar, setAvatar] = useState(null);
@@ -37,19 +38,25 @@ const MainLayout = ({ children }) => {
 
         {/* Feature Icons */}
         <nav className="nav-links">
-          <a href="#messages" className="nav-item">
+          {/* Link to Messages Page */}
+          <Link to="/messages" className="nav-item">
             <i className="pi pi-comments" style={{ fontSize: '1.60rem' }}></i>
-          </a>
-          <a href="#modules" className="nav-item">
+          </Link>
+          {/* Link to Modules Page */}
+          <Link to="/" className="nav-item">
             <i className="pi pi-book" style={{ fontSize: '1.60rem' }}></i>
-          </a>
+          </Link>
+          {/* Link to Dashboard Page */}
+          <Link to="/dashboard" className="nav-item">
+            <i className="pi pi-desktop" style={{ fontSize: '1.60rem' }}></i>
+          </Link>
         </nav>
 
         {/* Help Icon at the Bottom */}
         <div className="bottom-icon">
-          <a href="#help" className="nav-item">
+          <Link to="/help" className="nav-item">
             <i className="pi pi-question" style={{ fontSize: '1.60rem' }}></i>
-          </a>
+          </Link>
         </div>
       </div>
 

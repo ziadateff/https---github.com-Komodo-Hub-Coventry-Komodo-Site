@@ -1,0 +1,150 @@
+/* Dashboard container */
+.dashboard {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  height: 100vh; /* Fill the entire viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Welcome text */
+.welcome-text {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Widgets container */
+.widgets-container {
+  display: flex;
+  gap: 20px; /* Space between columns */
+  flex: 1; /* Fill remaining space */
+}
+
+/* Left column */
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between widgets */
+  flex: 1; /* Take up 50% of the width */
+}
+
+/* Right column */
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between widgets */
+  flex: 2; /* Take up 50% of the width */
+}
+
+/* Widget styling */
+.widget {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Revenue widget styling */
+.revenue-widget {
+  flex: 2; /* Make the graph widget larger */
+}
+
+/* Widget title */
+.widget-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+  font-weight: 600;
+}
+
+/* Widget count (number of schools or students) */
+.widget-count {
+  font-size: 36px;
+  font-weight: bold;
+  color: #007bff;
+  margin: 0;
+}
+
+/* Widget subtext */
+.widget-subtext {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+/* List widgets (Schools and Communities) */
+.list-widget {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* List styling */
+.school-list,
+.community-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* List item styling */
+.school-item,
+.community-item {
+  font-size: 14px;
+  color: #333;
+  padding: 12px;
+  margin: 8px 0;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.school-item:hover,
+.community-item:hover {
+  background-color: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* Add an icon or bullet point for each item */
+.school-item::before,
+.community-item::before {
+  content: '•';
+  color: #007bff;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-right: 10px;
+}
+
+/* Remove border from the last item */
+.school-item:last-child,
+.community-item:last-child {
+  border-bottom: none;
+}
+
+/* Widget styling */
+.widget {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Pie chart widget */
+.pie-chart-widget {
+  height: 400px; /* Adjust height as needed */
+}
