@@ -9,8 +9,9 @@
 
 /* Header */
 .header {
-  font-size: 24px;
+  font-size: 40px;
   margin-bottom: 10px;
+  color: #56bbf1;
 }
 
 /* Welcome text */
@@ -40,17 +41,17 @@
   border-radius: 12px;
   padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  margin-bottom: 20px; /* Space between widgets */
-  cursor: grab; /* Change cursor to indicate draggable */
-  min-height: 200px; /* Set a minimum height for all widgets */
+  text-align: center; /* Center text horizontally */
+  margin-bottom: 20px;
+  cursor: grab;
+  min-height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center content vertically */
+  justify-content: flex-start; /* Align content to the top */
   align-items: center; /* Center content horizontally */
-  width: 100%; /* Ensure widgets take up full column width */
-  border: 1px solid #e0e0e0; /* Thin border */
-  position: relative; /* Make the widget a positioning context */
+  width: 100%;
+  border: 1px solid #000000;
+  position: relative;
 }
 
 .widget:active {
@@ -75,6 +76,8 @@
   font-size: 18px;
   margin-bottom: 10px;
   color: #333;
+  align-self: flex-start; /* Align title to the left */
+  width: 100%; /* Ensure title takes full width */
 }
 
 /* Widget count (number of schools or students) */
@@ -82,7 +85,7 @@
   font-size: 36px;
   font-weight: bold;
   color: #007bff;
-  margin: 0;
+  margin: 0 0 10px 0; /* Add margin-bottom for spacing */
 }
 
 /* Widget subtext */
@@ -92,10 +95,21 @@
   margin: 0;
 }
 
+/* Center the number and subtext */
+.widget-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center vertically */
+  align-items: center; /* Center horizontally */
+  flex-grow: 1; /* Take up remaining space */
+  width: 100%;
+}
+
 /* List styling */
-.community-list {
-  list-style-type: none;
-  padding: 0;
+.community-list,
+.school-list {
+  list-style-type: none; /* Remove default bullets */
+  padding-left: 0; /* Remove default padding */
   margin: 0;
   max-height: 200px; /* Limit height */
   overflow-y: auto; /* Add scrollbar if content overflows */
@@ -103,6 +117,7 @@
 }
 
 /* List item styling */
+.school-item,
 .community-item {
   font-size: 14px;
   color: #333;
@@ -116,9 +131,22 @@
   align-items: center;
 }
 
+.school-item:hover,
 .community-item:hover {
   background-color: #f1f1f1;
   transform: translateY(-2px);
+}
+
+/* Add an icon or bullet point for each item */
+.school-item::before,
+.community-item::before {
+  content: '•'; /* Custom bullet point */
+  color: #007bff; /* Bullet color */
+  font-weight: bold; /* Make the bullet bold */
+  display: inline-block;
+  width: 1em; /* Fixed width for consistent spacing */
+  margin-right: 10px; /* Space between bullet and text */
+  font-size: 18px; /* Larger bullet size */
 }
 
 .drag-handle {

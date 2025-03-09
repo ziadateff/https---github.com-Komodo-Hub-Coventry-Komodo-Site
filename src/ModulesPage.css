@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* Set Arial globally */
+body {
+  font-family: 'Arial', sans-serif;
+}
+
 /* Styling for Module Page */
 .modules-container {
   text-align: center; /* Center align the title and grid */
@@ -7,16 +12,11 @@
 }
 
 .modules-title {
-  font-size: 36px; /* Larger font size for visibility */
   color: #56bbf1;
-  font-weight: 400; /* Make the title bold */
   text-align: left; /* Center align the title */
-  margin-bottom: 24px; /* Space below the title */
-  letter-spacing: 1px; /* Add spacing between letters */
-  font-family: 'Poppins', sans-serif; /* Change the font family */
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add a subtle shadow effect */
+  margin-bottom: 10px; /* Space below the title */
+  font-size: 40px;
 }
-
 
 /* Grid layout for module cards */
 .modules-grid {

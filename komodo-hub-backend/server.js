@@ -40,8 +40,23 @@ const schools = [
   { id: 15, name: 'Sulawesi Tech Academy', location: 'Manado', subscriptionDate: '2024-03-20' },
 ];
 
+// Mock data for total users
+const totalUsers = 2500; // Example data (can be dynamic)
+
 // Mock data for total students
 const totalStudents = 2100;
+
+// Mock data for user types
+const userTypesData = {
+  schools: 15, // Example data (can be dynamic)
+  communities: 10, // Example data (can be dynamic)
+  individualUsers: 5, // Example data (can be dynamic)
+};
+
+// API endpoint to get the total number of users
+app.get('/api/users/count', (req, res) => {
+  res.json({ count: totalUsers });
+});
 
 // API endpoint to get the number of schools subscribed
 app.get('/api/schools/count', (req, res) => {
@@ -66,6 +81,11 @@ app.get('/api/communities/count', (req, res) => {
 // API endpoint to get the list of schools
 app.get('/api/schools', (req, res) => {
   res.json(schools);
+});
+
+// API endpoint to get user type proportions
+app.get('/api/user-types', (req, res) => {
+  res.json(userTypesData);
 });
 
 // Start the server

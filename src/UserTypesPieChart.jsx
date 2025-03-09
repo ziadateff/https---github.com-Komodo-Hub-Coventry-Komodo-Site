@@ -25,7 +25,10 @@ const UserTypesPieChart = () => {
   useEffect(() => {
     fetch('http://localhost:5000/api/user-types')
       .then((response) => response.json())
-      .then((data) => setUserTypes(data))
+      .then((data) => {
+        console.log('User Types Data:', data); // Debugging
+        setUserTypes(data);
+      })
       .catch((error) => console.error('Error fetching user types:', error));
   }, []);
 
@@ -34,7 +37,7 @@ const UserTypesPieChart = () => {
     labels: ['Schools', 'Communities', 'Individual Users'],
     datasets: [
       {
-        label: 'User Types',
+        label: ' ',
         data: [userTypes.schools, userTypes.communities, userTypes.individualUsers],
         backgroundColor: [
           '#007bff', // Blue for Schools
