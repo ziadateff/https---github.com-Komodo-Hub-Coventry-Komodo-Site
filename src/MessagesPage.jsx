@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import 'primeicons/primeicons.css'; // Import PrimeIcons CSS
 import './MessagesPage.css'; // Import your custom CSS file
+import EmojiPicker from 'emoji-picker-react'; // Import EmojiPicker
 
 const MessagesPage = () => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -12,7 +13,9 @@ const MessagesPage = () => {
   const [newUserName, setNewUserName] = useState('');
   const [newMessageText, setNewMessageText] = useState('');
   const [clickedMessageId, setClickedMessageId] = useState(null); // Track clicked message
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false); // State for emoji picker visibility
   const messagesEndRef = useRef(null);
+  const emojiPickerRef = useRef(null); // Ref for emoji picker container
 
   // Fetch users you've messaged
   const fetchUsers = async () => {
@@ -144,6 +147,25 @@ const MessagesPage = () => {
     setClickedMessageId(messageId === clickedMessageId ? null : messageId); // Toggle clicked message
   };
 
+  // Handle emoji selection
+  const handleEmojiClick = (emojiObject) => {
+    setNewMessage((prevMessage) => prevMessage + emojiObject.emoji); // Append emoji to the message
+  };
+
+  // Close emoji picker when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (emojiPickerRef.current && !emojiPickerRef.current.contains(event.target)) {
+        setShowEmojiPicker(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="messages-page-container">
       {/* Sidebar for user list */}
@@ -186,6 +208,7 @@ const MessagesPage = () => {
             className="start-new-conversation-button"
             onClick={() => setIsNewConversationModalOpen(true)}
           >
+            <i className="pi pi-plus" style={{ marginRight: '8px' }} /> {/* PrimeIcons plus icon */}
             Start a new conversation
           </button>
         </div>
@@ -235,8 +258,28 @@ const MessagesPage = () => {
                   onChange={(e) => setNewMessage(e.target.value)}
                   placeholder="Type a message..."
                 />
+                {/* Emoji Picker Button */}
+                <button
+                  type="button"
+                  className="emoji-picker-button"
+                  onClick={() => setShowEmojiPicker(!showEmojiPicker)}
+                >
+                  <i className="pi pi-face-smile" /> {/* PrimeIcons smile icon */}
+                </button>
                 <button type="submit">Send</button>
               </form>
+              {/* Emoji Picker */}
+              <div className={`emoji-picker-container ${showEmojiPicker ? 'open' : ''}`} ref={emojiPickerRef}>
+                <div className="emoji-picker-header">
+                    <h3>Emoji Picker</h3>
+                        <button onClick={() => setShowEmojiPicker(false)}>
+                            <i className="pi pi-times" /> {/* Close icon */}
+                        </button>
+                      </div>
+                    <div className="emoji-picker-body">
+                  <EmojiPicker onEmojiClick={handleEmojiClick} />
+                </div>
+              </div>
             </div>
           </>
         ) : (
