@@ -6,6 +6,7 @@ const port = 5000;
 
 // Enable CORS for all routes
 app.use(cors());
+app.use(express.json()); // Parse JSON request bodies
 
 // Mock data for communities
 const communities = [
@@ -53,6 +54,21 @@ const userTypesData = {
   individualUsers: 5, // Example data (can be dynamic)
 };
 
+// Mock data for users (for messaging functionality)
+let users = [
+  { id: 1, name: 'John' },
+  { id: 2, name: 'Jane' },
+  { id: 3, name: 'Zeiad' },
+  { id: 4, name: 'Fatima' },
+  { id: 5, name: 'Aliviah' },
+  { id: 6, name: 'Xavi' },
+  { id: 7, name: 'Ahmed' },
+  { id: 8, name: 'Sinem' },
+];
+
+// Mock data for messages (for messaging functionality)
+let messages = [];
+
 // API endpoint to get the total number of users
 app.get('/api/users/count', (req, res) => {
   res.json({ count: totalUsers });
@@ -86,6 +102,100 @@ app.get('/api/schools', (req, res) => {
 // API endpoint to get user type proportions
 app.get('/api/user-types', (req, res) => {
   res.json(userTypesData);
+});
+
+// API endpoint to get users you've messaged
+app.get('/api/messages/users', (req, res) => {
+  const searchTerm = req.query.search || ''; // Get search term from query params
+
+  // Find users you've messaged
+  const messagedUsers = users.filter((user) =>
+    messages.some((message) => message.userId === user.id && message.sender === 'You')
+  );
+
+  // Filter messaged users based on search term
+  const filteredUsers = messagedUsers.filter((user) =>
+    user.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  res.json(filteredUsers);
+});
+
+// API endpoint to get messages for a specific user (for messaging functionality)
+app.get('/api/messages/:userId', (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const userMessages = messages.filter((message) => message.userId === userId);
+  res.json(userMessages);
+});
+
+// API endpoint to send a message (for messaging functionality)
+app.post('/api/messages/send', (req, res) => {
+  const { userId, text, sender } = req.body;
+
+  if (!userId || !text || !sender) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  const newMessage = {
+    id: messages.length + 1,
+    userId,
+    text,
+    sender,
+    timestamp: new Date().toLocaleTimeString(),
+  };
+
+  messages.push(newMessage);
+  res.status(201).json(newMessage);
+});
+
+// API endpoint to send a message to a new user
+app.post('/api/messages/send-to-new-user', (req, res) => {
+  const { name, text, sender } = req.body;
+
+  if (!name || !text || !sender) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  // Check if the user already exists
+  let user = users.find((u) => u.name.toLowerCase() === name.toLowerCase());
+
+  // If the user doesn't exist, create a new user
+  if (!user) {
+    user = {
+      id: users.length + 1, // Generate a new ID
+      name: name,
+    };
+    users.push(user);
+  }
+
+  // Add the message to the messages array
+  const newMessage = {
+    id: messages.length + 1,
+    userId: user.id,
+    text: text,
+    sender: sender,
+    timestamp: new Date().toLocaleTimeString(),
+  };
+
+  messages.push(newMessage);
+  res.status(201).json(newMessage);
+});
+
+// API endpoint to delete a message
+app.delete('/api/messages/:messageId', (req, res) => {
+  const messageId = parseInt(req.params.messageId);
+
+  // Find the index of the message to delete
+  const messageIndex = messages.findIndex((message) => message.id === messageId);
+
+  if (messageIndex === -1) {
+    return res.status(404).json({ error: 'Message not found' });
+  }
+
+  // Remove the message from the array
+  messages.splice(messageIndex, 1);
+
+  res.status(200).json({ success: true });
 });
 
 // Start the server

@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './MainLayout';
 import ModulesPage from './ModulesPage';
-import MessagesPage from './MessagesPage'; // Add this import
-import DashboardPage from './DashboardPage'; // Add this import
+import MessagesPage from './MessagesPage'; 
+import DashboardPage from './DashboardPage'; 
 import MathsPage from './Modules/pages/MathsPage';
 import GeographyPage from './Modules/pages/GeographyPage';
 import EnglishPage from './Modules/pages/EnglishPage';
