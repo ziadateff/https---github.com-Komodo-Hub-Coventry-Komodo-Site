@@ -150,7 +150,7 @@ body {
 /* Start New Conversation Button with Plus Icon */
 .new-conversation-button-container {
   padding: 16px;
-  border-top: 1px solid #000000; /* Subtle border */
+  border-top: 1px solid #78d0fe; /* Subtle border */
   background-color: #ffffff; /* White background */
   display: flex;
   align-items: center;
