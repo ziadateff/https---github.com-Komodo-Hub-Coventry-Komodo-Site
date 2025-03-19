@@ -8,6 +8,32 @@ body {
     background-color: #f5f7f6; /* Light natural background */
   }
   
+  /* Glassmorphism Effect */
+  .header, .feature-card, .statistic, .footer {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+  }
+
+  /* Header Animation Styles */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 97%;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .header.hide-up {
+    transform: translateY(-100%); /* Move header up out of view */
+  }
+  
+  .header.hide-down {
+    transform: translateY(100%); /* Move header down out of view */
+  }
+  
   /* Header */
   .header {
     display: flex;
@@ -134,10 +160,20 @@ body {
     width: auto; /* Maintain aspect ratio */
     height: auto;
     max-width: 100%; /* Ensure it doesn't overflow */
+    animation: float 3s ease-in-out infinite; /* Microinteraction */
   }
   
-/* Features Section */
-.features-section {
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Features Section */
+  .features-section {
     padding: 80px 40px;
     background-color: #ffffff;
     text-align: center;
@@ -158,7 +194,7 @@ body {
   
   .features-track {
     display: flex;
-    animation: scroll 30s linear infinite; /* Adjust speed as needed */
+    animation: scroll 20s linear infinite; /* Adjust speed as needed */
   }
   
   @keyframes scroll {
@@ -173,11 +209,18 @@ body {
   .feature-card {
     background-color: #f5f7f6;
     border-radius: 10px;
+    border: #78d0fe;
     padding: 20px;
     width: 200px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
     margin-right: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover effect */
+  }
+  
+  .feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
   }
   
   .feature-card h3 {
@@ -190,44 +233,17 @@ body {
     font-size: 14px;
     color: #666;
   }
-
-/* Statistics Section */
-.statistics-section {
+  
+  /* Statistics Section */
+  .statistics-section {
     background-color: #000;
     color: #fff;
     padding: 80px 20px;
     position: relative;
     overflow: hidden;
+    border-radius: 70px;
   }
   
-  /* Falling numbers container */
-  .falling-numbers-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Ensure clicks pass through to the content below */
-  }
-  
-  /* Falling numbers animation */
-  @keyframes fall {
-    0% {
-      transform: translateY(-100%);
-    }
-    100% {
-      transform: translateY(100vh);
-    }
-  }
-  
-  .falling-number {
-    position: absolute;
-    color: rgba(255, 255, 255, 0.3); /* More transparent */
-    font-size: 1rem; /* Smaller size */
-    animation: fall linear infinite;
-  }
-  
-  /* Statistics content */
   .statistics-container {
     display: flex;
     align-items: center;
@@ -235,17 +251,16 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    z-index: 1; /* Ensure content is above the falling numbers */
   }
   
   .statistics-image {
-    flex: 1;
+    flex: 1.5;
     margin-right: 40px;
   }
   
   .statistics-image img {
     width: 100%;
-    max-width: 700px;
+    max-width: 900px;
     height: auto;
   }
   
@@ -271,9 +286,187 @@ body {
   .statistic h3 {
     font-size: 2.5rem;
     margin-bottom: 10px;
+    color: #78d0fe; /* Gradient accent */
   }
   
   .statistic p {
     font-size: 1.2rem;
     color: #ccc;
   }
+
+  /* Image Animation Styles */
+.statistics-image img,
+.statistics-image-2 img {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out 0.5s, transform 0.6s ease-out 1.3s; /* Delay of 0.5s */
+}
+
+.statistics-image.visible img,
+.statistics-image-2.visible img {
+  opacity: 1;
+  transform: translateY(0);
+}
+  
+ /* Statistics 2 Section */
+.statistics-section-2 {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text for contrast */
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .statistics-container-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    background-color: transparent !important;
+    flex-direction: row; /* Ensure content is on the left and image on the right */
+  }
+  
+  .statistics-image-2 {
+    flex: 1.5;
+    margin-left: 40px; /* Space between content and image */
+    margin-right: 0; /* Reset margin-right */
+  }
+  
+  .statistics-image-2 img {
+    width: 100%;
+    max-width: 900px;
+    height: auto;
+  }
+  
+  .statistics-content-2 {
+    flex: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    background-color: #ffffff;
+  }
+  
+  .statistic-2 {
+    flex: 1 1 calc(50% - 20px); /* Two columns with gap */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .statistic-2.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .statistic-2 h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #78d0fe; /* Gradient accent */
+  }
+  
+  .statistic-2 p {
+    font-size: 1.2rem;
+    color: #000000; /* Gray text for description */
+  }
+
+/* Social Media Icons */
+.social-media-icons {
+    display: flex;
+    flex-direction: column; /* Stack icons vertically */
+    gap: 10px; /* Space between icons */
+    position: absolute; /* Position absolutely within the footer */
+    left: 20px; /* Distance from the left edge */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust vertical centering */
+  }
+  
+  .social-media-icons a {
+    color: #fff; /* White color for icons */
+    font-size: 24px; /* Icon size */
+    transition: color 0.3s ease;
+  }
+  
+  .social-media-icons a:hover {
+    color: #000000; /* Black on hover */
+  }
+  
+/* Footer */
+.footer {
+    background-color: #78d0fe; /* Primary color */
+    color: #fff; /* White text for contrast */
+    padding: 40px 20px;
+    font-family: 'Arial', sans-serif;
+    margin-top: 50px; /* Add some space above the footer */
+    min-height: 300px; /* Minimum height for the footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space between content and links */
+    position: relative; /* Required for absolute positioning of icons */
+  }
+  
+  /* Footer Content */
+  .footer-content {
+    max-width: 1200px; /* Adjusted max-width */
+    margin: 0 auto;
+    width: 100%; /* Ensure it takes full width */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Push content to the bottom */
+    flex-grow: 1; /* Allow content to grow and push links to the bottom */
+  }
+  
+  /* Footer Links with White Line */
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the links horizontally */
+    position: relative; /* Required for pseudo-element positioning */
+    padding-top: 20px; /* Add space for the line */
+    margin-bottom: 20px; /* Space between links and copyright */
+  }
+  
+  .footer-links::before {
+    content: ''; /* Required for pseudo-element */
+    position: absolute;
+    top: 0; /* Position at the top of the container */
+    left: 50%; /* Center the line horizontally */
+    transform: translateX(-50%); /* Adjust horizontal centering */
+    width: 80%; /* Width of the line */
+    height: 1px; /* Thickness of the line */
+    background-color: #fff; /* White color for the line */
+  }
+  
+  .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #000000; /* Black on hover */
+  }
+  
+  .footer-links button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links button:hover {
+    color: #0056b3; /* Darker blue for hover effect */
+  }
+  
+  /* Copyright */
+  .footer-copyright {
+    font-size: 14px;
+    opacity: 0.8; /* Slightly transparent for a subtle look */
+    text-align: center; /* Center the copyright text */
+  }
+  
