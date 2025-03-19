@@ -5,460 +5,275 @@ body {
     padding: 0;
     box-sizing: border-box;
     color: #333;
-    overflow-x: hidden;
+    background-color: #f5f7f6; /* Light natural background */
   }
   
-  .homepage {
-    max-width: 1200px;
-    margin: 0 auto;
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: transparent; /* Transparent header */
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50; /* Dark text for contrast */
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .nav a:hover {
+    color: #000000; /* Black on hover */
+  }
+  
+  .nav a {
+    text-decoration: none;
+    color: #808080; /* Gray for normal state */
+    font-size: 16px;
+    transition: color 0.3s ease;
+  }
+  
+  .login-btn {
+    background-color: #78d0fe; /* Light blue button */
+    color: white; /* White text */
+    border-radius: 30px; /* Curved edges */
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #000000; /* Black on hover */
+    transform: translateY(-2px); /* Slight lift */
+  }
+  
+  /* Contact Button */
+  .Contact-btn {
+    background-color: #78d0fe; /* Light blue button */
+    color: white; /* White text */
+    border: none;
+    border-radius: 30px; /* Curved edges */
+    padding: 15px 40px; /* Larger size */
+    font-size: 18px; /* Bigger text */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0px 4px 6px rgba(120, 208, 254, 0.3); /* Subtle shadow */
+  }
+  
+  /* Hover Effect */
+  .Contact-btn:hover {
+    background-color: #000000; /* Black on hover */
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+  }
+  
+  /* Learn More Button */
+  .LearnMore-btn {
+    background-color: #ffffff; /* White button */
+    color: #000000; /* Black text */
+    border: none;
+    border-radius: 30px; /* Curved edges */
+    padding: 15px 40px; /* Larger size */
+    font-size: 18px; /* Bigger text */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Hover Effect */
+  .LearnMore-btn:hover {
+    background-color: #78d0fe; /* Light blue on hover */
+    color: #ffffff; /* White text */
+    transform: translateY(-3px); /* Slight lift */
+    box-shadow: 0px 6px 8px rgba(120, 208, 254, 0.4); /* Enhanced shadow on hover */
+  }
+  
+  /* Button Container */
+  .button-container {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Adjust margin as needed */
+  }
+  
+  /* Main Content */
+  .main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 80px;
+  }
+  
+  .text-content {
+    max-width: 600px;
+  }
+  
+  .text-content h1 {
+    font-size: 48px; /* Large heading */
+    color: #2c3e50; /* Dark text for contrast */
+  }
+  
+  .text-content p {
+    font-size: 18px; /* Subtle gray for paragraph text */
+    color: #666;
+  }
+  
+  /* Illustration Section */
+  .illustration img,
+  .illustration2 img {
+    width: auto; /* Maintain aspect ratio */
+    height: auto;
+    max-width: 100%; /* Ensure it doesn't overflow */
+  }
+  
+/* Features Section */
+.features-section {
+    padding: 80px 40px;
+    background-color: #ffffff;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  .features-section h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #2c3e50;
+  }
+  
+  .features-bar {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .features-track {
+    display: flex;
+    animation: scroll 30s linear infinite; /* Adjust speed as needed */
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%); /* Move the track by half its width */
+    }
+  }
+  
+  .feature-card {
+    background-color: #f5f7f6;
+    border-radius: 10px;
     padding: 20px;
+    width: 200px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+  
+  .feature-card h3 {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 10px;
+  }
+  
+  .feature-card p {
+    font-size: 14px;
+    color: #666;
+  }
+
+/* Statistics Section */
+.statistics-section {
+    background-color: #000;
+    color: #fff;
+    padding: 80px 20px;
     position: relative;
     overflow: hidden;
   }
   
-  /* Logo Container */
-  .logo-container {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 2;
-  }
-  
-  .logo {
-    width: 150px;
-    height: auto;
-  }
-  
-  /* Background Shapes */
-  .background-shapes {
+  /* Falling numbers container */
+  .falling-numbers-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    overflow: hidden;
+    pointer-events: none; /* Ensure clicks pass through to the content below */
   }
   
-  .shape {
+  /* Falling numbers animation */
+  @keyframes fall {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(100vh);
+    }
+  }
+  
+  .falling-number {
     position: absolute;
-    background: rgba(0, 123, 255, 0.1);
-    transition: transform 0.1s linear;
+    color: rgba(255, 255, 255, 0.3); /* More transparent */
+    font-size: 1rem; /* Smaller size */
+    animation: fall linear infinite;
   }
   
-  /* Circle */
-  .shape.circle {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    top: 10%;
-    left: 5%;
-    animation: float 6s infinite ease-in-out;
-  }
-  
-  /* Triangle */
-  .shape.triangle {
-    width: 0;
-    height: 0;
-    border-left: 100px solid transparent;
-    border-right: 100px solid transparent;
-    border-bottom: 200px solid rgba(0, 123, 255, 0.1);
-    top: 30%;
-    right: 10%;
-    animation: float 8s infinite ease-in-out;
-  }
-  
-  /* Square */
-  .shape.square {
-    width: 150px;
-    height: 150px;
-    top: 60%;
-    left: 20%;
-    animation: float 7s infinite ease-in-out;
-  }
-  
-  /* Hexagon */
-  .shape.hexagon {
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 87, 51, 0.1);
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    top: 40%;
-    right: 25%;
-    animation: float 9s infinite ease-in-out;
-  }
-  
-  /* Star */
-  .shape.star {
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 193, 7, 0.1);
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    top: 70%;
-    left: 100%;
-    animation: float 10s infinite ease-in-out;
-  }
-  
-  /* Oval */
-  .shape.oval {
-    width: 200px;
-    height: 100px;
-    border-radius: 50%;
-    top: 20%;
-    left: 70%;
-    background: rgba(0, 123, 255, 0.1);
-    animation: float 7s infinite ease-in-out;
-  }
-  
-  /* Diamond */
-  .shape.diamond {
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 87, 51, 0.1);
-    transform: rotate(45deg);
-    top: 50%;
-    left: 80%;
-    animation: float 8s infinite ease-in-out;
-  }
-  
-  /* Heart */
-  .shape.heart {
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 87, 51, 0.1);
-    clip-path: path("M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
-    top: 80%;
-    left: 10%;
-    animation: float 9s infinite ease-in-out;
-  }
-  
-  /* Cross */
-  .shape.cross {
-    width: 120px;
-    height: 120px;
-    background: rgba(255, 87, 51, 0.1);
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    top: 90%;
-    left: 50%;
-    animation: float 10s infinite ease-in-out;
-  }
-  
-  /* Floating Animation */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-  
-  /* Hero Section */
-  .hero {
+  /* Statistics content */
+  .statistics-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 100px 0;
+    max-width: 1200px;
+    margin: 0 auto;
     position: relative;
-    z-index: 1;
+    z-index: 1; /* Ensure content is above the falling numbers */
   }
   
-  .hero-content {
-    max-width: 500px;
+  .statistics-image {
+    flex: 1;
+    margin-right: 40px;
   }
   
-  .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
-    color: #2c3e50;
+  .statistics-image img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
   }
   
-  .hero-content p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #666;
-  }
-  
-  .hero-image img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Value Proposition Section */
-  .value-proposition {
+  .statistics-content {
+    flex: 2;
     display: flex;
-    justify-content: space-between;
-    margin: 100px 0;
+    flex-wrap: wrap;
     gap: 20px;
   }
   
-  .value-card {
-    text-align: center;
-    padding: 20px;
-    border-radius: 10px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .value-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .value-card .icon {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  
-  .value-card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #2c3e50;
-  }
-  
-  .value-card p {
-    font-size: 16px;
-    color: #666;
-  }
-  
-  /* Features Section */
-  .features {
-    margin: 100px 0;
-    text-align: center;
-  }
-  
-  .features h2 {
-    font-size: 36px;
-    margin-bottom: 50px;
-    color: #2c3e50;
-  }
-  
-  /* Flip Book Container */
-  .book-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
-    perspective: 1500px; /* Adds depth for realistic 3D effect */
-  }
-  
-  /* Flip Book Styling */
-  .flip-book {
-    width: 600px; /* Adjusted for a larger book */
-    height: 800px; /* Adjusted for a larger book */
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Realistic shadow */
-    border-radius: 10px; /* Rounded corners for book edges */
-  }
-  
-  /* Page Styling */
-  .page {
-    background-color: #ffffff;
-    color: #333;
-    padding: 30px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px; /* Rounded corners for pages */
-  }
-  
-  /* Cover Page Styling */
-  .cover-page {
-    background-color: #8db8e6;
-    color: white;
-  }
-  
-  /* Feature Page Styling */
-  .feature-page h3 {
-    font-size: 24px; /* Larger font for titles */
-  }
-  
-  .feature-page p {
-    font-size: 16px; /* Consistent font size for descriptions */
-  }
-  
-  /* Shadows for Realism */
-  .page::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    background-color: rgba(0,0,0,0.1); /* Adds subtle shadow to pages */
-  }
-  
-  /* Book Controls */
-  .book-controls {
-    margin-top: 20px;
-  }
-  
-  .book-controls button {
-    background-color: #007bff; /* Button color matching theme */
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px; /* Rounded corners for buttons */
-  }
-  
-  .book-controls button:hover {
-    background-color: #0056b3; /* Darker shade on hover for better interaction */
-  }
-  
-  /* Testimonials Section */
-  .testimonials {
-    margin: 100px 0;
-    text-align: center;
-  }
-  
-  .testimonials h2 {
-    font-size: 36px;
-    margin-bottom: 50px;
-    color: #2c3e50;
-  }
-  
-  .testimonial-cards {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .testimonial-card {
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .testimonial-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .testimonial-card p {
-    font-size: 18px;
-    color: #666;
-    margin-bottom: 10px;
-  }
-  
-  .testimonial-card h3 {
-    font-size: 20px;
-    color: #2c3e50;
-  }
-  
-  /* Call-to-Action Section */
-  .cta-section {
-    text-align: center;
-    padding: 100px 0;
-    background: #f9f9f9;
-    border-radius: 10px;
-    margin: 100px 0;
-  }
-  
-  .cta-section h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-    color: #2c3e50;
-  }
-  
-  .cta-section p {
-    font-size: 20px;
-    margin-bottom: 30px;
-    color: #666;
-  }
-  
-  /* CTA Button */
-  .cta-button {
-    background-color: #007BFF;
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Animations */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-  
-  /* Initial hidden state */
-  .hidden {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  
-  /* Animated state */
-  .animate {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  }
-  
-  /* Staggered animations for cards */
-  .value-card,
-  .feature-card,
-  .testimonial-card {
+  .statistic {
+    flex: 1 1 calc(50% - 20px);
     opacity: 0;
     transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
   
-  .animate .value-card,
-  .animate .feature-card,
-  .animate .testimonial-card {
+  .statistic.visible {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
   }
   
-  /* Ensure delays apply */
-  .value-card,
-  .feature-card,
-  .testimonial-card {
-    transition-delay: var(--delay, 0s);
+  .statistic h3 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
   }
   
-  /* Top-Right Buttons */
-  .top-right-buttons {
-    position: fixed; /* Fixed position to keep buttons at the top */
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 1000; /* Ensure buttons are above other elements */
-    transition: transform 0.5s ease, opacity 0.5s ease;
-  }
-  
-  .top-right-buttons.fly-up {
-    transform: translateY(-100px); /* Move buttons up */
-    opacity: 0; /* Fade out buttons */
-  }
-  
-  .nav-button {
-    background-color: transparent;
-    border: transparent;
-    color: #000000;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .nav-button:hover {
-    background-color: #007BFF;
-    color: white;
+  .statistic p {
+    font-size: 1.2rem;
+    color: #ccc;
   }
