@@ -4,6 +4,8 @@ import Illustration from '/src/assets/images/26-Programmer.svg';
 import Illustration2 from '/src/assets/images/125-Online-Education.svg';
 import ReportingImage from '/src/assets/images/12-Corporate-Trainer.svg';
 import SalesTargetImage from '/src/assets/images/64.-Sales-Target.svg';
+import FAQ from '/src/FAQ.jsx'; 
+import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -12,6 +14,16 @@ function HomePage() {
   const [counters2, setCounters2] = useState([0, 0, 0, 0]);
   const [countersAnimated, setCountersAnimated] = useState(false);
   const [counters2Animated, setCounters2Animated] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleLoginClick = () => {
+    setIsAnimating(true); // Start the animation
+    setTimeout(() => {
+      navigate('/login'); // Navigate to the LogInPage after the animation
+    }, 2000); // Match the duration of the animation (2 seconds)
+  };
+
 
   // Scroll direction detection
   useEffect(() => {
@@ -59,7 +71,7 @@ function HomePage() {
     statisticElements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [countersAnimated, counters2Animated]); // Add dependencies
+  }, [countersAnimated, counters2Animated]);
 
   // Counter animation function
   const animateCounters = (setCounterFunction, targetValues) => {
@@ -93,50 +105,50 @@ function HomePage() {
   // Features data
   const features = [
     {
-      title: 'Interactive Courses',
-      description: 'Engage with interactive and hands-on learning materials.',
+      title: 'Endangered Species Knowledge Base',
+      description: 'Access a comprehensive library of information about Indonesia’s endangered endemic species, including their habitats and conservation needs.',
     },
     {
-      title: 'Collaborative Learning',
-      description: 'Work with peers and teachers in real-time.',
+      title: 'Community-Driven Conservation',
+      description: 'Empower communities to contribute articles, sighting reports, and conservation efforts to expand the platform’s resources.',
     },
     {
-      title: 'Progress Tracking',
-      description: 'Track your learning progress with detailed analytics.',
+      title: 'Interactive Learning Tools',
+      description: 'Engage with interactive educational materials, games, and activities designed to promote awareness and involvement in conservation.',
     },
     {
-      title: 'Certification Programs',
-      description: 'Earn certifications to showcase your skills.',
+      title: 'School Integration Features',
+      description: 'Enable schools to manage student enrollment, create unique profiles, and incorporate conservation programs into their curricula.',
     },
     {
-      title: '24/7 Support',
-      description: 'Get help anytime with our dedicated support team.',
+      title: 'Species Reporting System',
+      description: 'Report sightings of endangered species using built-in tools to aid in tracking and monitoring biodiversity.',
     },
     {
-      title: 'Customizable Learning Paths',
-      description: 'Tailor your learning journey to your goals.',
+      title: 'Privacy and Data Security',
+      description: 'Ensure user data protection with encryption, authentication methods, and compliance with privacy regulations, especially for children’s data.',
     },
     {
-      title: 'Mobile Accessibility',
-      description: 'Learn on the go with our mobile-friendly platform.',
+      title: 'Scalable Infrastructure',
+      description: 'Adapt to growing user demands with a scalable platform that doesn’t require investment in physical infrastructure.',
     },
   ];
 
-  const duplicatedFeatures = [...features, ...features];
+  const duplicatedFeatures = [...features, ...features, ...features];
 
   // Statistics data
   const statistics = [
-    { number: '500+', label: 'Schools Using Komodo Hub', icon: <i className="pi pi-building" style={{ fontSize: '24px', color: 'white' }}></i> },
-    { number: '50,000+', label: 'Active Students', icon: <i className="pi pi-users" style={{ fontSize: '24px', color: 'white' }}></i> },
-    { number: '1,000+', label: 'Certified Teachers', icon: <i className="pi pi-check-circle" style={{ fontSize: '24px', color: 'white' }}></i> },
-    { number: '10M+', label: 'Lessons Completed', icon: <i className="pi pi-book" style={{ fontSize: '24px', color: 'white' }}></i> },
+    { number: '200+', label: 'Schools using komodo hub', icon: <i className="pi pi-building" style={{ fontSize: '24px', color: 'white' }}></i> },
+    { number: '5000+', label: 'Active students', icon: <i className="pi pi-users" style={{ fontSize: '24px', color: 'white' }}></i> },
+    { number: '500+', label: 'Teachers ', icon: <i className="pi pi-check-circle" style={{ fontSize: '24px', color: 'white' }}></i> },
+    { number: '10M+', label: 'Lessons completed', icon: <i className="pi pi-book" style={{ fontSize: '24px', color: 'white' }}></i> },
   ];
 
   const statistics2 = [
-    { number: '200+', label: 'Courses Available', icon: <i className="pi pi-book" style={{ fontSize: '24px', color: 'black' }}></i> },
-    { number: '95%', label: 'Satisfaction Rate', icon: <i className="pi pi-check-circle" style={{ fontSize: '24px', color: 'black' }}></i> },
-    { number: '1M+', label: 'Downloads', icon: <i className="pi pi-users" style={{ fontSize: '24px', color: 'black' }}></i> },
-    { number: '24/7', label: 'Support Availability', icon: <i className="pi pi-clock" style={{ fontSize: '24px', color: 'black' }}></i> },
+    { number: '6', label: 'Courses available', icon: <i className="pi pi-book" style={{ fontSize: '24px', color: 'black' }}></i> },
+    { number: '95%', label: 'Percent satisfaction rate', icon: <i className="pi pi-check-circle" style={{ fontSize: '24px', color: 'black' }}></i> },
+    { number: '1M+', label: 'Downloads', icon: <i className="pi pi-download" style={{ fontSize: '24px', color: 'black' }}></i> },
+    { number: '24/7', label: 'Hour support availability', icon: <i className="pi pi-clock" style={{ fontSize: '24px', color: 'black' }}></i> },
   ];
 
   return (
@@ -146,9 +158,9 @@ function HomePage() {
         <div className="logo">Komodo Hub</div>
         <nav className="nav">
           <a href="#about">About Us</a>
-          <a href="#courses">Tens of Features!</a>
+          <a href="#courses">Features</a>
           <a href="#professors">Contact</a>
-          <button className="login-btn">Log in</button>
+          <button className="login-btn pulse">Log in</button>
         </nav>
       </header>
 
@@ -159,10 +171,21 @@ function HomePage() {
           <p>
             A space where current students and teachers can learn more about courses and their peers.
           </p>
+
           <div className="button-container">
-            <button className="Contact-btn">Contact</button>
+
+          <button
+              className={`LogInMain-btn ${isAnimating ? 'animate' : ''}`}
+              onClick={handleLoginClick}
+              disabled={isAnimating} // Disable the button during animation
+            >
+              {isAnimating ? '' : 'Log In'} {/* Hide text during animation */}
+            </button>
+
             <button className="LearnMore-btn pulse">Learn More</button>
+
           </div>
+
         </div>
         <div className="illustration">
           <img src={Illustration} alt="Computer Guy" className="animated-illustration" />
@@ -174,7 +197,7 @@ function HomePage() {
 
       {/* Features Section */}
       <section className="features-section">
-        <h2>Features</h2>
+        <h2>Tens of features!</h2>
         <div className="features-bar">
           <div className="features-track">
             {duplicatedFeatures.map((feature, index) => (
@@ -223,39 +246,53 @@ function HomePage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <FAQ /> {/* Add the FAQ component here */}
+
       {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-            {/* Social Media Icons */}
-            <div className="social-media-icons">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-                <i className="pi pi-facebook" style={{ color: 'white' }}></i>
-            </a>
-            <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
-                <i className="pi pi-discord" style={{ color: 'white' }}></i>
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                <i className="pi pi-twitter" style={{ color: 'white' }}></i>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <i className="pi pi-instagram" style={{ color: 'white' }}></i>
-            </a>
-            <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
-                <i className="pi pi-tiktok" style={{ color: 'white' }}></i>
-            </a>
-            </div>
-          <div className="footer-links">
-            <a href="#terms">Terms of Service</a>
-            <a href="#privacy">Privacy Policy</a>
-            <button className="cookie-notice-btn">Cookie Notice</button>
-            <a href="#contact">Contact Us</a>
-            <a href="#about">About Us</a>
-          </div>
-          <div className="footer-copyright">
-            &copy; {new Date().getFullYear()} Komodo Hub. All rights reserved.
-          </div>
-        </div>
-      </footer>
+<footer className="footer">
+  <div className="footer-content">
+    {/* Social Media Icons */}
+    <div className="social-media-icons">
+      <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-facebook"></i>
+      </a>
+      <a href="https://discord.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-discord"></i>
+      </a>
+      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-twitter"></i>
+      </a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-instagram"></i>
+      </a>
+      <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-tiktok"></i>
+      </a>
+      <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-linkedin"></i>
+      </a>
+      <a href="https://reddit.com" target="_blank" rel="noopener noreferrer">
+        <i className="pi pi-reddit"></i>
+      </a>
+    </div>
+    <div className="footer-links">
+      <a href="#terms">Terms of Service</a>
+      <a href="#privacy">Privacy Policy</a>
+      <button className="cookie-notice-btn">Cookie Notice</button>
+      <a href="#contact">Contact Us</a>
+      <a href="#about">About Us</a>
+    </div>
+    <div className="footer-copyright">
+      &copy; {new Date().getFullYear()} Komodo Hub. All rights reserved.
+    </div>
+  </div>
+
+  {/* Back to Top Button */}
+  <button className="back-to-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+    <i className="pi pi-arrow-up"></i>
+  </button>
+</footer>
     </div>
   );
 }

@@ -82,8 +82,84 @@ body {
     transform: translateY(-2px); /* Slight lift */
   }
   
-  /* Contact Button */
-  .Contact-btn {
+/* Progress Bar Animation */
+@keyframes progressBar {
+    0% {
+      width: 100px; /* Initial width of the button */
+    }
+    100% {
+      width: 100%; /* Full width of the container */
+    }
+  }
+  
+  /* Apply the animation to the button */
+  .LogInMain-btn.animate {
+    width: 100px; /* Initial width */
+    height: 50px; /* Height of the button */
+    border-radius: 30px; /* Curved edges */
+    background-color: #78d0fe; /* Button color */
+    color: white; /* Text color */
+    font-size: 18px; /* Text size */
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden; /* Hide overflow for the progress bar */
+    animation: progressBar 2s ease forwards; /* Apply the progress bar animation */
+    pointer-events: none; /* Disable clicks during animation */
+  }
+  
+  @keyframes animatedGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* Progress Bar Fill Effect */
+  .LogInMain-btn.animate::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #ffffff; /* Color of the progress bar */
+    z-index: 1;
+    animation: fillProgress 2.3s ease forwards; /* Fill animation */
+  }
+  
+  @keyframes fillProgress {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+  
+ /* Pulsating Animation */
+@keyframes pulse {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(120, 208, 254, 0.7);
+    }
+    70% {
+      transform: scale(1.05);
+      box-shadow: 0 0 0 10px rgba(120, 208, 254, 0);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(120, 208, 254, 0);
+    }
+  }
+  
+  /* Log In Main Button */
+  .LogInMain-btn {
     background-color: #78d0fe; /* Light blue button */
     color: white; /* White text */
     border: none;
@@ -94,13 +170,15 @@ body {
     cursor: pointer;
     transition: all 0.3s ease; /* Smooth transition for hover effects */
     box-shadow: 0px 4px 6px rgba(120, 208, 254, 0.3); /* Subtle shadow */
+    animation: pulse 2s infinite; /* Apply the pulsating animation */
   }
   
   /* Hover Effect */
-  .Contact-btn:hover {
+  .LogInMain-btn:hover {
     background-color: #000000; /* Black on hover */
     transform: translateY(-3px); /* Slight lift */
     box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+    animation: none; /* Stop the pulsating animation on hover */
   }
   
   /* Learn More Button */
@@ -211,7 +289,7 @@ body {
     border-radius: 10px;
     border: #78d0fe;
     padding: 20px;
-    width: 200px;
+    width: 300px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
     margin-right: 20px;
@@ -371,6 +449,32 @@ body {
     color: #000000; /* Gray text for description */
   }
 
+/* Back to Top Button */
+.back-to-top {
+    position: fixed; /* Fixed position */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    background-color: #ffffff; /* Light blue background */
+    color: #000000; /* White text */
+    border: none;
+    border-radius: 50%; /* Circular button */
+    width: 50px; /* Button size */
+    height: 50px;
+    font-size: 24px; /* Icon size */
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .back-to-top:hover {
+    background-color: #000000; /* Black on hover */
+    color: #ffffff;
+    transform: translateY(-5px); /* Slight lift on hover */
+  }
+
 /* Social Media Icons */
 .social-media-icons {
     display: flex;
@@ -389,7 +493,7 @@ body {
   }
   
   .social-media-icons a:hover {
-    color: #000000; /* Black on hover */
+    color: #000000 !important; /* Black on hover */
   }
   
 /* Footer */
@@ -399,7 +503,7 @@ body {
     padding: 40px 20px;
     font-family: 'Arial', sans-serif;
     margin-top: 50px; /* Add some space above the footer */
-    min-height: 300px; /* Minimum height for the footer */
+    min-height: 250px; /* Minimum height for the footer */
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Space between content and links */
@@ -460,7 +564,7 @@ body {
   }
   
   .footer-links button:hover {
-    color: #0056b3; /* Darker blue for hover effect */
+    color: #000000; /* Darker blue for hover effect */
   }
   
   /* Copyright */
@@ -469,4 +573,3 @@ body {
     opacity: 0.8; /* Slightly transparent for a subtle look */
     text-align: center; /* Center the copyright text */
   }
-  

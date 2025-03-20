@@ -11,6 +11,7 @@ import EnglishPage from './Modules/pages/EnglishPage';
 import HistoryPage from './Modules/pages/HistoryPage';
 import SciencePage from './Modules/pages/SciencePage';
 import CSPage from './Modules/pages/CSPage';
+import LogInPage from '/src/LogInPage.jsx';
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
       <Routes>
         {/* Home Page (No MainLayout wrapper) */}
         <Route path="/" element={<HomePage />} />
+
+        <Route path="/login" element={<LogInPage />} />
 
         {/* Other Pages (Wrapped in MainLayout) */}
         <Route path="/modules" element={<MainLayout><ModulesPage /></MainLayout>} />
