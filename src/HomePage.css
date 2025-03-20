@@ -477,24 +477,43 @@ body {
 
 /* Social Media Icons */
 .social-media-icons {
-    display: flex;
-    flex-direction: column; /* Stack icons vertically */
-    gap: 10px; /* Space between icons */
-    position: absolute; /* Position absolutely within the footer */
-    left: 20px; /* Distance from the left edge */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust vertical centering */
-  }
-  
-  .social-media-icons a {
-    color: #fff; /* White color for icons */
-    font-size: 24px; /* Icon size */
-    transition: color 0.3s ease;
-  }
-  
-  .social-media-icons a:hover {
-    color: #000000 !important; /* Black on hover */
-  }
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  gap: 20px; /* Space between icons */
+  margin-bottom: 20px; /* Space between icons and the line */
+}
+
+.social-media-icons a {
+  color: #fff; /* White color for icons */
+  font-size: 24px; /* Icon size */
+  transition: color 0.3s ease;
+}
+
+.social-media-icons a:hover {
+  color: #000000 !important; /* Black on hover */
+}
+
+/* Footer Links with White Line */
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the links horizontally */
+  position: relative; /* Required for pseudo-element positioning */
+  padding-top: 20px; /* Add space for the line */
+  margin-bottom: 20px; /* Space between links and copyright */
+}
+
+.footer-links::before {
+  content: ''; /* Required for pseudo-element */
+  position: absolute;
+  top: 0; /* Position at the top of the container */
+  left: 50%; /* Center the line horizontally */
+  transform: translateX(-50%); /* Adjust horizontal centering */
+  width: 80%; /* Width of the line */
+  height: 1px; /* Thickness of the line */
+  background-color: #fff; /* White color for the line */
+}
   
 /* Footer */
 .footer {
@@ -519,28 +538,6 @@ body {
     flex-direction: column;
     justify-content: flex-end; /* Push content to the bottom */
     flex-grow: 1; /* Allow content to grow and push links to the bottom */
-  }
-  
-  /* Footer Links with White Line */
-  .footer-links {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center; /* Center the links horizontally */
-    position: relative; /* Required for pseudo-element positioning */
-    padding-top: 20px; /* Add space for the line */
-    margin-bottom: 20px; /* Space between links and copyright */
-  }
-  
-  .footer-links::before {
-    content: ''; /* Required for pseudo-element */
-    position: absolute;
-    top: 0; /* Position at the top of the container */
-    left: 50%; /* Center the line horizontally */
-    transform: translateX(-50%); /* Adjust horizontal centering */
-    width: 80%; /* Width of the line */
-    height: 1px; /* Thickness of the line */
-    background-color: #fff; /* White color for the line */
   }
   
   .footer-links a {

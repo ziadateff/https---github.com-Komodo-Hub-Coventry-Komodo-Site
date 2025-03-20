@@ -90,7 +90,7 @@ function FAQ() {
       {/* FAQ Content */}
       <div className="faq-content">
         <h1>FAQs</h1>
-        <p className="subheading">Common questions about Aula, and the team behind the platform.</p>
+        <p className="subheading">Common questions about Komodo Hub.</p>
         <div className="faq-grid">
           {faqItems.map((item, index) => (
             <div key={index} className={`faq-item ${activeIndex === index ? 'active' : ''}`}>
