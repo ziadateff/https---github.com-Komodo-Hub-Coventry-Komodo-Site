@@ -15,13 +15,13 @@ function HomePage() {
   const [countersAnimated, setCountersAnimated] = useState(false);
   const [counters2Animated, setCounters2Animated] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
   const handleLoginClick = () => {
-    setIsAnimating(true); // Start the animation
+    setIsAnimating(true);
     setTimeout(() => {
-      navigate('/login'); // Navigate to the LogInPage after the animation
-    }, 2000); // Match the duration of the animation (2 seconds)
+      navigate('/login');
+    }, 2000);
   };
 
 
@@ -54,19 +54,19 @@ function HomePage() {
             // Trigger counter animations for statistics sections
             if (entry.target.closest('.statistics-section') && !countersAnimated) {
               animateCounters(setCounters, [500, 50000, 1000, 10000000]);
-              setCountersAnimated(true); // Mark as animated
+              setCountersAnimated(true); // Mark as animated to not load again
             }
             if (entry.target.closest('.statistics-section-2') && !counters2Animated) {
               animateCounters(setCounters2, [200, 95, 1000000, 24]);
-              setCounters2Animated(true); // Mark as animated
+              setCounters2Animated(true); // Mark as animated to not load again
             }
           }
         });
       },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
+      { threshold: 0.1 }
     );
 
-    // Observe statistics images and content
+    // Observe statistics images and content to ensiure correct loading
     const statisticElements = document.querySelectorAll('.statistic, .statistic-2, .statistics-image, .statistics-image-2');
     statisticElements.forEach((el) => observer.observe(el));
 
@@ -75,8 +75,8 @@ function HomePage() {
 
   // Counter animation function
   const animateCounters = (setCounterFunction, targetValues) => {
-    const duration = 2000; // Animation duration in milliseconds
-    const interval = 10; // Update interval in milliseconds
+    const duration = 2000;
+    const interval = 10;
 
     targetValues.forEach((target, index) => {
       let start = 0;
@@ -155,7 +155,7 @@ function HomePage() {
     <div className="homepage">
       {/* Header */}
       <header className={`header ${!headerVisible ? (lastScrollY > 0 ? 'hide-up' : 'hide-down') : ''}`}>
-        <div className="logo">Komodo Hub</div>
+        <div className="logo">Komodo Hub.</div>
         <nav className="nav">
           <a href="#about">About Us</a>
           <a href="#courses">Features</a>
@@ -167,7 +167,7 @@ function HomePage() {
       {/* Main Content */}
       <main className="main-content">
         <div className="text-content">
-          <h1>Welcome to Komodo Hub</h1>
+          <h1>Welcome to Komodo Hub.</h1>
           <p>
             A space where current students and teachers can learn more about courses and their peers.
           </p>
@@ -247,11 +247,17 @@ function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <FAQ /> {/* Add the FAQ component here */}
+      <FAQ />
 
       {/* Footer */}
 <footer className="footer">
   <div className="footer-content">
+ 
+    <button className="logo-button">
+      <img src="/src/assets/Logo Icon.svg" alt="Logo" className="logo-icon" />
+    </button>
+
+
     {/* Social Media Icons */}
     <div className="social-media-icons">
       <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">

@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './FAQ.css';
-import { PrimeIcons } from 'primereact/api'; // Import PrimeIcons
-import BackgroundImage from '/src/assets/images/282-Searching-For-Answers.svg'; // Import the background image
+import { PrimeIcons } from 'primereact/api';
+import BackgroundImage from '/src/assets/images/282-Searching-For-Answers.svg';
 
 function FAQ() {
   const [activeIndex, setActiveIndex] = useState(null);
-  const faqSectionRef = useRef(null); // Ref for the FAQ section
-  const [isVisible, setIsVisible] = useState(false); // State to track visibility
+  const faqSectionRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   // Intersection Observer to detect when the FAQ section is in view
   useEffect(() => {
@@ -14,21 +14,21 @@ function FAQ() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setIsVisible(true); // Set visibility to true when the section is in view
-            observer.unobserve(entry.target); // Stop observing once the section is visible
+            setIsVisible(true);
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.1 } // Trigger when 10% of the section is visible
+      { threshold: 0.1 }
     );
 
     if (faqSectionRef.current) {
-      observer.observe(faqSectionRef.current); // Start observing the FAQ section
+      observer.observe(faqSectionRef.current);
     }
 
     return () => {
       if (faqSectionRef.current) {
-        observer.unobserve(faqSectionRef.current); // Cleanup observer
+        observer.unobserve(faqSectionRef.current);
       }
     };
   }, []);
@@ -77,7 +77,7 @@ function FAQ() {
   ];
   
   const toggleAnswer = (index) => {
-    setActiveIndex(activeIndex === index ? null : index); // Toggle the active index
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
